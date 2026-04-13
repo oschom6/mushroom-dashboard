@@ -139,8 +139,11 @@ function GrowDetailPage({ grows, onAddHarvest, onEditGrow }) {
         </div>
         <div className="grid grid-cols-1 gap-2 text-sm text-cream-200 sm:grid-cols-2">
           <p><span className="text-cream-100">Substrate:</span> {grow.substrate}</p>
+          <p><span className="text-cream-100">Chamber:</span> {grow.fruitingChamberType || '—'}</p>
           <p><span className="text-cream-100">Genetics:</span> {grow.geneticsSource}</p>
           <p><span className="text-cream-100">Grain Type:</span> {grow.grainType || '—'}</p>
+          <p><span className="text-cream-100">Grain Amount:</span> {grow.grainAmount || '—'} {grow.grainAmountUnit || ''}</p>
+          <p><span className="text-cream-100">Spawn Amount:</span> {grow.spawnAmount || '—'} {grow.spawnAmountUnit || ''}</p>
           <p><span className="text-cream-100">Inoculated:</span> {grow.inoculationDate}</p>
           <p><span className="text-cream-100">Spawn to Bulk:</span> {grow.spawnToBulkDate || '—'}</p>
           <p><span className="text-cream-100">Status:</span> {grow.status}</p>

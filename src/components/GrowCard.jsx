@@ -46,6 +46,9 @@ function GrowCard({ grow, onEdit }) {
           <span className="text-cream-100">Substrate:</span> {grow.substrate}
         </p>
         <p>
+          <span className="text-cream-100">Chamber:</span> {grow.fruitingChamberType || '—'}
+        </p>
+        <p>
           <span className="text-cream-100">Grain Type:</span> {grow.grainType || '—'}
         </p>
         <p>

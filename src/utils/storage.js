@@ -10,6 +10,16 @@ const statusMap = {
   active: 'Growing',
 };
 
+
+const chamberOptions = new Set([
+  'SGFC (Shotgun Fruiting Chamber)',
+  'Dub Tub',
+  'Martha Tent',
+  'Monotub',
+  'Agar Plate',
+  'Other',
+]);
+
 const geneticsMap = {
   'grain spawn': 'Grain Spawn',
   'liquid culture': 'Liquid Culture',
@@ -22,6 +32,11 @@ const geneticsMap = {
 const normalizeGrow = (grow) => ({
   ...grow,
   grainType: grow.grainType || '',
+  grainAmount: grow.grainAmount || '',
+  grainAmountUnit: grow.grainAmountUnit || 'grams',
+  spawnAmount: grow.spawnAmount || '',
+  spawnAmountUnit: grow.spawnAmountUnit || 'grams',
+  fruitingChamberType: chamberOptions.has(grow.fruitingChamberType) ? grow.fruitingChamberType : 'Monotub',
   spawnToBulkDate: grow.spawnToBulkDate || '',
   status: statusMap[(grow.status || '').toLowerCase()] || grow.status || 'Growing',
   geneticsSource: geneticsMap[(grow.geneticsSource || '').toLowerCase()] || grow.geneticsSource || 'Grain Spawn',

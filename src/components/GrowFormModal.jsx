@@ -4,7 +4,12 @@ const defaultState = {
   name: '',
   species: '',
   substrate: '',
+  fruitingChamberType: 'Monotub',
   grainType: '',
+  grainAmount: '',
+  grainAmountUnit: 'grams',
+  spawnAmount: '',
+  spawnAmountUnit: 'grams',
   geneticsSource: 'Grain Spawn',
   inoculationDate: '',
   spawnToBulkDate: '',
@@ -41,22 +46,86 @@ function GrowFormModal({ isOpen, onClose, onSave, initialData }) {
             { key: 'name', label: 'Grow Name', type: 'text' },
             { key: 'species', label: 'Species', type: 'text' },
             { key: 'substrate', label: 'Substrate Type', type: 'text' },
+            { key: 'fruitingChamberType', label: 'Fruiting Chamber Type', type: 'select' },
             { key: 'grainType', label: 'Grain Type', type: 'text', placeholder: 'corn, rice, bird seed, rye, millet...' },
             { key: 'inoculationDate', label: 'Inoculation Date', type: 'date' },
             { key: 'spawnToBulkDate', label: 'Spawn to Bulk Date', type: 'date' },
           ].map((field) => (
             <label key={field.key} className="flex flex-col gap-1 text-sm text-cream-200">
               {field.label}
-              <input
-                required={field.type === 'date' || field.key !== 'spawnToBulkDate'}
-                type={field.type}
-                placeholder={field.placeholder}
-                value={formData[field.key]}
-                onChange={(e) => setFormData((prev) => ({ ...prev, [field.key]: e.target.value }))}
-                className="rounded-md border border-forest-800 bg-forest-800 px-3 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
-              />
+              {field.type === 'select' ? (
+                <select
+                  value={formData.fruitingChamberType}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, fruitingChamberType: e.target.value }))}
+                  className="rounded-md border border-forest-800 bg-forest-800 px-3 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                >
+                  <option value="SGFC (Shotgun Fruiting Chamber)">SGFC (Shotgun Fruiting Chamber)</option>
+                  <option value="Dub Tub">Dub Tub</option>
+                  <option value="Martha Tent">Martha Tent</option>
+                  <option value="Monotub">Monotub</option>
+                  <option value="Agar Plate">Agar Plate</option>
+                  <option value="Other">Other</option>
+                </select>
+              ) : (
+                <input
+                  required={field.type === 'date' || field.key !== 'spawnToBulkDate'}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  value={formData[field.key]}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, [field.key]: e.target.value }))}
+                  className="rounded-md border border-forest-800 bg-forest-800 px-3 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                />
+              )}
             </label>
           ))}
+
+          <div className="col-span-1 grid grid-cols-1 gap-3 sm:col-span-2 sm:grid-cols-2">
+            <label className="flex flex-col gap-1 text-sm text-cream-200">
+              Grain Amount
+              <div className="flex gap-2">
+                <input
+                  required
+                  min="0"
+                  step="0.1"
+                  type="number"
+                  value={formData.grainAmount}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, grainAmount: e.target.value }))}
+                  className="w-full rounded-md border border-forest-800 bg-forest-800 px-3 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                />
+                <select
+                  value={formData.grainAmountUnit}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, grainAmountUnit: e.target.value }))}
+                  className="w-28 rounded-md border border-forest-800 bg-forest-800 px-2 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                >
+                  <option value="grams">grams</option>
+                  <option value="lbs">lbs</option>
+                </select>
+              </div>
+            </label>
+
+            <label className="flex flex-col gap-1 text-sm text-cream-200">
+              Spawn Amount
+              <div className="flex gap-2">
+                <input
+                  required
+                  min="0"
+                  step="0.1"
+                  type="number"
+                  value={formData.spawnAmount}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, spawnAmount: e.target.value }))}
+                  className="w-full rounded-md border border-forest-800 bg-forest-800 px-3 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                />
+                <select
+                  value={formData.spawnAmountUnit}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, spawnAmountUnit: e.target.value }))}
+                  className="w-28 rounded-md border border-forest-800 bg-forest-800 px-2 py-2 text-cream-100 outline-none ring-moss-400 focus:ring-2"
+                >
+                  <option value="grams">grams</option>
+                  <option value="lbs">lbs</option>
+                </select>
+              </div>
+            </label>
+          </div>
 
           <label className="flex flex-col gap-1 text-sm text-cream-200">
             Genetics Source
