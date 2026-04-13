@@ -1,0 +1,57 @@
+export const seedGrows = [
+  {
+    id: 'grow-1',
+    name: 'Basement Lion\'s Mane Block A',
+    species: "Lion's Mane",
+    substrate: 'Hardwood sawdust + soy hulls',
+    geneticsSource: 'liquid culture',
+    inoculationDate: '2026-01-04',
+    status: 'harvested',
+    notes: 'Kept at 90% humidity in Martha tent.',
+    harvests: [
+      { id: 'h-1', date: '2026-02-09', weight: 385, flush: 1 },
+      { id: 'h-2', date: '2026-02-18', weight: 292, flush: 2 },
+      { id: 'h-3', date: '2026-02-28', weight: 168, flush: 3 },
+    ],
+  },
+  {
+    id: 'grow-2',
+    name: 'Blue Oyster Shelf Batch',
+    species: 'Blue Oyster',
+    substrate: 'Pasteurized straw',
+    geneticsSource: 'agar culture',
+    inoculationDate: '2026-02-01',
+    status: 'fruiting',
+    notes: 'Good FAE but still dialing in side pinning.',
+    harvests: [
+      { id: 'h-4', date: '2026-03-01', weight: 512, flush: 1 },
+      { id: 'h-5', date: '2026-03-10', weight: 334, flush: 2 },
+    ],
+  },
+  {
+    id: 'grow-3',
+    name: 'Golden Teacher Tub 12L',
+    species: 'Cubensis',
+    substrate: 'Coir + vermiculite + gypsum',
+    geneticsSource: 'spore print',
+    inoculationDate: '2026-02-14',
+    status: 'colonizing',
+    notes: 'Mycelium growth is even; no visible contamination.',
+    harvests: [
+      { id: 'h-6', date: '2026-03-22', weight: 224, flush: 1 },
+    ],
+  },
+  {
+    id: 'grow-4',
+    name: 'Pink Oyster Trial Bin',
+    species: 'Pink Oyster',
+    substrate: 'Coffee grounds + hardwood pellets',
+    geneticsSource: 'unknown',
+    inoculationDate: '2026-01-21',
+    status: 'failed',
+    notes: 'Trichoderma spotted after first flush, isolated and discarded.',
+    harvests: [
+      { id: 'h-7', date: '2026-02-26', weight: 156, flush: 1 },
+    ],
+  },
+];
